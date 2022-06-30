@@ -14,12 +14,6 @@ defmodule ExpiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ExpiWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
   # Other scopes may use custom stacks.
   # scope "/api", ExpiWeb do
   #   pipe_through :api

@@ -1,4 +1,4 @@
-defmodule ExpiWeb.PageController do
+defmodule ExpiWeb.ReposController do
   use ExpiWeb, :controller
 
   def index(conn, _params) do
