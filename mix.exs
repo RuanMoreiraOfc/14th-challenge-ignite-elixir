@@ -51,7 +51,8 @@ defmodule Expi.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:tesla, "~> 1.4"},
-      {:hackney, "~> 1.17"}
+      {:hackney, "~> 1.17"},
+      {:bypass, "~> 2.1", only: :test}
     ]
   end
 
