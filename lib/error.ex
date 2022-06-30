@@ -23,4 +23,9 @@ defmodule Expi.Error do
     :bad_request
     |> build(result)
   end
+
+  def build_repos_not_found_error do
+    "No Repos where found!"
+    |> build_not_found
+  end
 end
