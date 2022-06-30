@@ -21,9 +21,12 @@ defmodule Expi.Github.Client do
   end
 
   defp handle_get({:ok, %Env{status: 200, body: body}}) do
-    Enum.map(body, fn item ->
-      Response.build(item)
-    end)
+    repos =
+      Enum.map(body, fn item ->
+        Response.build(item)
+      end)
+
+    {:ok, repos}
   end
 
   defp handle_get({:ok, %Env{status: 404}}) do
