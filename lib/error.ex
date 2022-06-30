@@ -25,7 +25,7 @@ defmodule Expi.Error do
   end
 
   def build_repos_not_found_error do
-    "No Repos where found!"
+    "No Repos were found!"
     |> build_not_found
   end
 end
