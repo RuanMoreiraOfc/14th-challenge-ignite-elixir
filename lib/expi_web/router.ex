@@ -15,9 +15,11 @@ defmodule ExpiWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ExpiWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", ExpiWeb do
+    pipe_through :api
+
+    get "/repos/:user", ReposController, :repos
+  end
 
   # Enables LiveDashboard only for development
   #
