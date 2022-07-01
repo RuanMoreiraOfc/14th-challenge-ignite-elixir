@@ -30,3 +30,6 @@ config :logger, level: :warn
 config :phoenix, :plug_init_mode, :runtime
 
 config :bypass, enable_debug_log: true
+
+# Mocks
+config :expi, ExpiWeb.ReposController, github_adapter: Expi.Github.ClientMock
