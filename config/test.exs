@@ -29,7 +29,12 @@ config :logger, level: :warn
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
+# External Libs
+## Bypass
 config :bypass, enable_debug_log: true
+
+## PBKDF2
+config :pbkdf2_elixir, :rounds, 1
 
 # Mocks
 config :expi, ExpiWeb.ReposController, github_adapter: Expi.Github.ClientMock
