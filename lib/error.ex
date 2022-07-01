@@ -24,6 +24,11 @@ defmodule Expi.Error do
     |> build(result)
   end
 
+  def build_unauthorized(result) do
+    :unauthorized
+    |> build(result)
+  end
+
   def build_repos_not_found_error do
     "No Repos were found!"
     |> build_not_found
