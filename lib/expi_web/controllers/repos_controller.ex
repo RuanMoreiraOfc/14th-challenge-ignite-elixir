@@ -4,9 +4,12 @@ defmodule ExpiWeb.ReposController do
   def repos(conn, %{"user" => user}) do
     github_client = client()
 
-    repos =
+    {:ok, repos} =
       user
       |> github_client.get_repos()
+
+    repos =
+      repos
       |> Enum.map(&Map.from_struct/1)
 
     conn

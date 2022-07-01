@@ -10,7 +10,7 @@ defmodule ExpiWeb.ReposControllerTest do
       param = "ruanmoreiraofc"
 
       expect(ClientMock, :get_repos, fn _user ->
-        [
+        repos = [
           %Response{
             id: 1,
             name: "name",
@@ -26,6 +26,8 @@ defmodule ExpiWeb.ReposControllerTest do
             stargazers_count: 0
           }
         ]
+
+        {:ok, repos}
       end)
 
       response =
