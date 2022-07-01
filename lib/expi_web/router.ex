@@ -1,6 +1,8 @@
 defmodule ExpiWeb.Router do
   use ExpiWeb, :router
 
+  alias ExpiWeb.Auth.Pipeline, as: AuthPipeline
+
   # coveralls-ignore-start
   pipeline :browser do
     plug :accepts, ["html"]
@@ -16,6 +18,10 @@ defmodule ExpiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AuthPipeline
+  end
+
   # Other scopes may use custom stacks.
   scope "/api", ExpiWeb do
     pipe_through :api
@@ -23,6 +29,12 @@ defmodule ExpiWeb.Router do
     get "/repos/:user", ReposController, :repos
     post "/users/", UsersController, :create
     post "/users/login", UsersController, :login
+  end
+
+  scope "/api", ExpiWeb do
+    pipe_through [:api, :auth]
+
+    get "/users/:id", UsersController, :show
   end
 
   # Enables LiveDashboard only for development
