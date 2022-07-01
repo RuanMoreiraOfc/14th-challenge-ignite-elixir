@@ -47,7 +47,18 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# External Libs
+## Tesla
 config :tesla, adapter: Tesla.Adapter.Hackney
+
+## Guardian
+config :expi, ExpiWeb.Auth.Guardian,
+  issuer: "expi",
+  secret_key: "4N8gBvLaAXhe43f1xHVdaoOZyhyL64N0MLJ3xYuqYDw6wcnT0eVoYlVBkav54JLt"
+
+config :expi, ExpiWeb.Auth.Pipeline,
+  module: ExpiWeb.Auth.Guardian,
+  error_handler: ExpiWeb.Auth.ErrorHandler
 
 # Mocks
 config :expi, ExpiWeb.ReposController, github_adapter: Expi.Github.Client
