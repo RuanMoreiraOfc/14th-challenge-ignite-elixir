@@ -1,20 +1,18 @@
 defmodule ExpiWeb.ReposController do
   use ExpiWeb, :controller
 
+  alias ExpiWeb.FallbackController
+
+  action_fallback FallbackController
+
   def repos(conn, %{"user" => user}) do
-    github_client = client()
+    with {:ok, list} <- client().get_repos(user) do
+      repos = Enum.map(list, &Map.from_struct/1)
 
-    {:ok, repos} =
-      user
-      |> github_client.get_repos()
-
-    repos =
-      repos
-      |> Enum.map(&Map.from_struct/1)
-
-    conn
-    |> put_status(:ok)
-    |> render("repos.json", repos: repos)
+      conn
+      |> put_status(:ok)
+      |> render("repos.json", repos: repos)
+    end
   end
 
   defp client do
