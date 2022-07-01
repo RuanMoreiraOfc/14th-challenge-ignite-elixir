@@ -28,4 +28,9 @@ defmodule Expi.Error do
     "No Repos were found!"
     |> build_not_found
   end
+
+  def build_user_not_found_error do
+    "User not found!"
+    |> build_not_found
+  end
 end
