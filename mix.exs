@@ -62,7 +62,8 @@ defmodule Expi.MixProject do
       {:bypass, "~> 2.1", only: :test},
       {:excoveralls, "~> 0.10", only: :test},
       {:mox, "~> 1.0", only: :test},
-      {:pbkdf2_elixir, "~> 2.0"}
+      {:pbkdf2_elixir, "~> 2.0"},
+      {:guardian, "~> 2.0"}
     ]
   end
 
