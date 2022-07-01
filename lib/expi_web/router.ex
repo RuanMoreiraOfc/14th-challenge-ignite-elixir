@@ -21,6 +21,8 @@ defmodule ExpiWeb.Router do
     pipe_through :api
 
     get "/repos/:user", ReposController, :repos
+    post "/users/", UsersController, :create
+    post "/users/login", UsersController, :login
   end
 
   # Enables LiveDashboard only for development
