@@ -10,6 +10,8 @@ import Config
 config :expi,
   ecto_repos: [Expi.Repo]
 
+config :expi, Expi.Repo, migration_primary_key: [type: :binary_id]
+
 # Configures the endpoint
 config :expi, ExpiWeb.Endpoint,
   url: [host: "localhost"],
