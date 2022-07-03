@@ -15,9 +15,10 @@ defmodule Expi.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Expi.PubSub},
       # Start the Endpoint (http/https)
-      ExpiWeb.Endpoint
+      ExpiWeb.Endpoint,
       # Start a worker by calling: Expi.Worker.start_link(arg)
       # {Expi.Worker, arg}
+      {Guardian.DB.Token.SweeperServer, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

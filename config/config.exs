@@ -62,6 +62,13 @@ config :expi, ExpiWeb.Auth.Pipeline,
   module: ExpiWeb.Auth.Guardian,
   error_handler: ExpiWeb.Auth.ErrorHandler
 
+config :guardian, Guardian.DB,
+  repo: Expi.Repo,
+  schema_name: "guardian_tokens",
+  token_types: ["access"],
+  # interval in minutes
+  sweep_interval: 1
+
 # Mocks
 config :expi, ExpiWeb.ReposController, github_adapter: Expi.Github.Client
 
