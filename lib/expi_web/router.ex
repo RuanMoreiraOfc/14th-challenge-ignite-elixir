@@ -2,6 +2,7 @@ defmodule ExpiWeb.Router do
   use ExpiWeb, :router
 
   alias ExpiWeb.Auth.Pipeline, as: AuthPipeline
+  alias ExpiWeb.Plugs.RefreshToken, as: RefreshTokenPlug
 
   # coveralls-ignore-start
   pipeline :browser do
@@ -20,6 +21,7 @@ defmodule ExpiWeb.Router do
 
   pipeline :auth do
     plug AuthPipeline
+    plug RefreshTokenPlug
   end
 
   # Other scopes may use custom stacks.
