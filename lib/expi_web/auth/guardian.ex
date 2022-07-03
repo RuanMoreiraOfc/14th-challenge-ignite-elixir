@@ -5,6 +5,8 @@ defmodule ExpiWeb.Auth.Guardian do
   alias Expi.User
   alias Expi.Users.Get, as: UserGet
 
+  @ttl {1, :minutes}
+
   @impl true
   def subject_for_token(%User{id: id}, _claims), do: {:ok, id}
 
@@ -18,7 +20,7 @@ defmodule ExpiWeb.Auth.Guardian do
   def authenticate(%{"id" => id, "password" => password}) do
     with {:ok, %User{password_hash: hash} = user} <- UserGet.by_id(id),
          true <- Pbkdf2.verify_pass(password, hash),
-         {:ok, token, _claims} <- encode_and_sign(user) do
+         {:ok, token, _claims} <- generate_token(user) do
       {:ok, token}
     else
       false ->
@@ -35,5 +37,9 @@ defmodule ExpiWeb.Auth.Guardian do
     "Invalid or missing params"
     |> Error.build_bad_request()
     |> Error.wrap()
+  end
+
+  def generate_token(%User{} = user) do
+    encode_and_sign(user, %{}, ttl: @ttl)
   end
 end

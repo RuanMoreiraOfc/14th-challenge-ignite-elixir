@@ -10,7 +10,7 @@ defmodule ExpiWeb.UsersController do
 
   def create(conn, params) do
     with {:ok, %User{} = user} <- Create.call(params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+         {:ok, token, _claims} <- Guardian.generate_token(user) do
       conn
       |> put_status(:created)
       |> render("create.json", user: user, token: token)
