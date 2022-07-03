@@ -1,19 +1,24 @@
-# Expi
+<h1 align='center'>
+14th Challenge Elixir
+</h1>
 
-To start your Phoenix server:
+This repo includes the resolution for 14th Challenge in Elixir Journey with [Rafael Camada][btn-tutor].
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+###### - Prior default phoenix setup
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+```bash
+mix guardian.db.gen.migration
+```
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## GOAL
 
-## Learn more
+```bash
+mix phx.server
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+# Available routes (with refresh jwt token)
+# GET /users/:id
+```
+
+<!-- VARIABLES -->
+
+[btn-tutor]: https://github.com/rafaelcamarda
