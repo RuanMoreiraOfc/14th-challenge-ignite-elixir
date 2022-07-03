@@ -26,10 +26,12 @@ defmodule ExpiWeb.UsersController do
   end
 
   def show(conn, %{"id" => id}) do
+    token = conn.private.expi_new_token
+
     with {:ok, user} <- Get.by_id(id) do
       conn
       |> put_status(:ok)
-      |> render("user.json", user: user)
+      |> render("user.json", user: user, token: token)
     end
   end
 end
