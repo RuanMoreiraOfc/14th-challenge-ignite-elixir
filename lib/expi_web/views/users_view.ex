@@ -15,9 +15,10 @@ defmodule ExpiWeb.UsersView do
     }
   end
 
-  def render("user.json", %{user: user}) do
+  def render("user.json", %{user: user, token: token}) do
     %{
-      user: user
+      user: user,
+      token: token
     }
   end
 end
