@@ -42,4 +42,9 @@ defmodule ExpiWeb.Auth.Guardian do
   def generate_token(%User{} = user) do
     encode_and_sign(user, %{}, ttl: @ttl)
   end
+
+  def refresh_token(old_token) do
+    {:ok, _old_token_info, {new_token, _claims}} = refresh(old_token, ttl: @ttl)
+    {:ok, new_token}
+  end
 end
